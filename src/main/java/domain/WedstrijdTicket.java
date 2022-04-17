@@ -1,4 +1,4 @@
-package be.hogent.fifa_world_cup.domain;
+package domain;
 
 public class WedstrijdTicket {
     private Wedstrijd wedstrijd;

@@ -1,4 +1,4 @@
-package be.hogent.fifa_world_cup.service;
+package service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import be.hogent.fifa_world_cup.domain.Wedstrijd;
-import be.hogent.fifa_world_cup.domain.WedstrijdTicket;
+import domain.Wedstrijd;
+import domain.WedstrijdTicket;
 
 public class VoetbalServiceImpl implements VoetbalService{
 

@@ -1,6 +1,6 @@
-package be.hogent.fifa_world_cup.service;
+package service;
 
-import be.hogent.fifa_world_cup.domain.WedstrijdTicket;
+import domain.WedstrijdTicket;
 import java.util.List;
 
 public interface VoetbalService {
