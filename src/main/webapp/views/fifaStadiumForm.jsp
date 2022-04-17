@@ -21,7 +21,7 @@
 		    <select name="stadiums">
 		    </select>
 		    </br>
-		    <button type="submit" class="text-black">Voer uit</button>
+		    <button type="submit" class="px-4 py-2 font-semibold text-sm bg-sky-500 text-white rounded-md shadow-sm opacity-100">Voer uit</button>
 	    </form:form>
     </div>
     </div>
