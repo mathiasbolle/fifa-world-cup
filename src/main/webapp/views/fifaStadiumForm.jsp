@@ -6,6 +6,8 @@
 <head>
 	<title>Fifa World Cup Quatar 2022</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <spring:url value="/img/favicon.ico" var="favicon" />
+    <link href="${favicon}" rel="icon" type="image/x-icon" />
 </head>
 <spring:url value="/img/background_stadium.jpg" var="background" />
 <body>
@@ -14,7 +16,7 @@
     </div>
     <%-- content of page --%>
     <div class="blur-none flex flex-col items-center justify-center h-screen">
-        <div class="border-2 rounded px-14 py-8 bg-white flex flex-col items-center">
+        <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white flex flex-col items-center">
 	    <h1 class="text-black uppercase text-5xl pb-3 font-bold">FIFA World Cup Quatar 2022</h1>
 	    <form:form method="GET">
 		    <label class="text-black">Stadiums</label>
