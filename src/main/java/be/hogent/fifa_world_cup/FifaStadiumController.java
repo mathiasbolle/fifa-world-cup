@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
-public class HomeController {
+@Controller()
+public class FifaStadiumController {
 
-    @GetMapping("/")
-    public String showHome(Model model) {
-        return "redirect:/fifa";
+    @GetMapping("/fifa")
+    public String showFifaStadium(Model model) {
+       return "fifaStadiumForm";
     }
 }
