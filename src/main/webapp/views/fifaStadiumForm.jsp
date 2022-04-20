@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <head>
@@ -18,9 +19,12 @@
     <div class="blur-none flex flex-col items-center justify-center h-screen">
         <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white flex flex-col items-center">
 	    <h1 class="text-black uppercase text-5xl pb-3 font-bold">FIFA World Cup Quatar 2022</h1>
-	    <form:form method="GET" class="flex flex-col items-center">
-		    <label class="text-black">Stadiums</label>
-		    <select name="stadiums" class="mb-2 inline-flex">
+	    <form:form method="POST" class="flex flex-col items-center">
+		    <label class="text-black" name="selectedStadium">Stadiums</label>
+		    <select name="selectedStadium" class="mb-2 inline-flex">
+		        <c:forEach var="stadium" items="${stadiumList}">
+                    <option value="${stadium}">${stadium}</option>
+		        </c:forEach>
 		    </select>
 		    </br>
 		    <button type="submit" class="px-4 py-2 font-semibold text-sm bg-[#4a524d] text-white rounded-md shadow-sm opacity-100">Voer uit</button>

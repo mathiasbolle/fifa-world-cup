@@ -23,7 +23,7 @@ public class VoetbalServiceImpl implements VoetbalService{
 
     public VoetbalServiceImpl() {
         //zonder databank
-        stadiumList = new ArrayList<>(Arrays.asList(new String[]{"Al Bayt Stadium", "Al Thumama Stadium"}));
+        stadiumList = new ArrayList<>(Arrays.asList(new String[]{"Al Bayt Stadium", "Al Thumama Stadium", "een ander stadium"}));
 
         mapWedstrijdById.put("1", new WedstrijdTicket(new Wedstrijd("1", new String[]{"België", "Canada"}, 26, 21), 35));
         mapWedstrijdById.put("2", new WedstrijdTicket(new Wedstrijd("2", new String[]{"Brazilië", "Zwitserland"}, 27, 18), 21));

@@ -1,14 +1,27 @@
 package be.hogent.fifa_world_cup;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import service.VoetbalService;
 
-@Controller()
+@Controller
+@RequestMapping("/fifa")
 public class FifaStadiumController {
+    @Autowired
+    private VoetbalService voetbalService;
 
-    @GetMapping("/fifa")
+    @GetMapping
     public String showFifaStadium(Model model) {
-       return "fifaStadiumForm";
+        model.addAttribute("stadiumList", voetbalService.getStadiumList());
+        return "fifaStadiumForm";
+    }
+
+    @PostMapping
+    public String onSubmit(@RequestParam(name = "selectedStadium") String nameStadium, Model model) {
+        model.addAttribute("stadiumName", nameStadium);
+        System.out.println(nameStadium);
+        return "fifaMatchesByStadium";
     }
 }
