@@ -1,10 +1,16 @@
 package domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class Wedstrijd {
     private String id; //unieke sleutel
 
     private String[] landen; //2 landen van de wedstrijd
 
+    @DateTimeFormat(pattern = "dd ")
+    private Date datum;
     private int dag; //dag van de wedstrijd
 
     private int uur; //uur van de wedstrijd

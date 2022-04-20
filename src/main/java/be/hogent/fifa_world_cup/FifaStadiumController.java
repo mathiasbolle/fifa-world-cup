@@ -1,5 +1,6 @@
 package be.hogent.fifa_world_cup;
 
+import domain.Wedstrijd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ public class FifaStadiumController {
     @PostMapping
     public String onSubmit(@RequestParam(name = "selectedStadium") String nameStadium, Model model) {
         model.addAttribute("stadiumName", nameStadium);
+        model.addAttribute("wedstrijden",voetbalService.getWedstrijdenByStadium(nameStadium));
         System.out.println(nameStadium);
         return "fifaMatchesByStadium";
     }

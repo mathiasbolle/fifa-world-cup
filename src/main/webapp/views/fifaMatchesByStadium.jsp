@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <head>
@@ -16,13 +17,13 @@
     </div>
     <%-- content of page --%>
     <div class="blur-none flex flex-col items-center h-screen mt-2 overflow-hidden">
-        <div class="flex flex-col h-screen place-content-evenly">
-            <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white flex flex-col items-center">
+            <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white absolute ">
 	            <h1 class="text-black uppercase text-5xl pb-3 font-bold">FIFA World Cup Quatar 2022</h1>
-	            <h1>Stadion: ${stadiumName}</h1>
+	            <h2 class="text-black text-3xl font-bold">Stadion: ${stadiumName}</h1>
             </div>
-            <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white flex flex-col items-center">
-                <table>
+            <div class="flex flex-col justify-center items-center h-screen">
+            <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white">
+                <table class="table-auto border-2 ">
                     <tr>
                         <%-- forEach! --%>
                         <th>Nr</th>
@@ -30,7 +31,16 @@
                         <th>Datum</th>
                         <th>Aftrap</th>
                         <th>Tickets</th>
-                    </tr
+                    </tr>
+		            <c:forEach var="wedstrijdData" items="${wedstrijden}">
+		                <tr>
+		                    <td>${wedstrijdData.getWedstrijd().getId()}</td>
+		                    <td>${wedstrijdData.getWedstrijd().getLanden()[0]}-${wedstrijdData.getWedstrijd().getLanden()[1]}</td>
+		                    <td>...</td>
+		                    <td>...</td>
+		                    <td>${wedstrijdData.getTickets()}</td>
+		                </tr>
+		            </c:forEach>
                 </table>
             </div>
         </div>
