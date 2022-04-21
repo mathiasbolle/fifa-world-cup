@@ -2,6 +2,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <head>
@@ -36,8 +37,8 @@
 		                <tr>
 		                    <td>${wedstrijdData.getWedstrijd().getId()}</td>
 		                    <td>${wedstrijdData.getWedstrijd().getLanden()[0]}-${wedstrijdData.getWedstrijd().getLanden()[1]}</td>
-		                    <td>...</td>
-		                    <td>...</td>
+		                    <td><fmt:formatDate value="${wedstrijdData.getWedstrijd().getDatum()}" pattern= "dd MMMMM"/></td>
+		                    <td>${wedstrijdData.getWedstrijd().getUur()}</td>
 		                    <td>${wedstrijdData.getTickets()}</td>
 		                </tr>
 		            </c:forEach>
