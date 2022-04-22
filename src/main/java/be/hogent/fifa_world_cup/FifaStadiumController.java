@@ -19,6 +19,11 @@ public class FifaStadiumController {
         return "fifaStadiumForm";
     }
 
+    @GetMapping("/{id}")
+    public String showFifaMatchById(Model model) {
+        return "fifaMatchById";
+    }
+
     @PostMapping
     public String onSubmit(@RequestParam(name = "selectedStadium") String nameStadium, Model model) {
         model.addAttribute("stadiumName", nameStadium);
