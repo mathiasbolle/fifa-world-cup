@@ -13,15 +13,6 @@
 </head>
 <spring:url value="/img/background_stadium.jpg" var="background" />
 <body>
-    <%-- background with position absolute --%>
-    <div class="brightness-50 absolute inset-0 h-screen bg-fixed bg-cover bg-no-repeat bg-center bg-[url('${background}')]">
-    </div>
-    <%-- content of page --%>
-    <div class="blur-none flex flex-col items-center h-screen mt-2 overflow-hidden">
-            <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white absolute ">
-	            <h1 class="text-black uppercase text-5xl pb-3 font-bold">FIFA World Cup Quatar 2022</h1>
-	            <h2 class="text-black text-3xl font-bold">Stadion: ${stadiumName}</h1>
-            </div>
             <div class="flex flex-col justify-center items-center h-screen">
             <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white">
                 <table class="table-auto border-2 ">

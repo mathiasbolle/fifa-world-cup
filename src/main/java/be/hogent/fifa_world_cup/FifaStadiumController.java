@@ -20,8 +20,8 @@ public class FifaStadiumController {
     }
 
     @GetMapping("/{id}")
-    public String showFifaMatchById(Model model) {
-        return "fifaMatchById";
+    public String showFifaMatchById(@PathVariable("id") int id, Model model) {
+        return "fifaStadiumResult";
     }
 
     @PostMapping
@@ -29,6 +29,6 @@ public class FifaStadiumController {
         model.addAttribute("stadiumName", nameStadium);
         model.addAttribute("wedstrijden",voetbalService.getWedstrijdenByStadium(nameStadium));
         System.out.println(nameStadium);
-        return "fifaMatchesByStadium";
+        return "fifaStadiumResult";
     }
 }
