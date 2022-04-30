@@ -20,7 +20,7 @@
     <div class="blur-none flex flex-col items-center h-screen mt-2 overflow-hidden">
             <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white absolute ">
 	            <h1 class="text-black uppercase text-5xl pb-3 font-bold">FIFA World Cup Quatar 2022</h1>
-	            <h2 class="text-black text-3xl font-bold">Stadion: ${stadiumName}</h1>
+	            <h2 class="text-black text-3xl font-bold">Stadion: ${stadiumSelection.getStadiumName()}</h1>
             </div>
 
     <c:choose>
