@@ -21,6 +21,9 @@ public class FifaStadiumController {
 
     @GetMapping("/{id}")
     public String showFifaMatchById(@PathVariable("id") int id, Model model) {
+        model.addAttribute("match_title", voetbalService.getWedstrijd(String.valueOf(id)).getWedstrijd().toString());
+        model.addAttribute("available_tickets", voetbalService.getWedstrijd(String.valueOf(id)).getTickets());
+
         return "fifaStadiumResult";
     }
 

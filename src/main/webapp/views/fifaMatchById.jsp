@@ -15,7 +15,23 @@
 <body>
             <div class="flex flex-col justify-center items-center h-screen">
             <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white">
-                hier komt dan dus coole shit
+                <h3>${match_title}</h3>
+                <h3>Aantal tickets beschikbaar: ${available_tickets}</h3>
+                <form>
+                    <label>Email:</label>
+                    <input>
+
+                    <label>Aantal tickets:</label>
+                    <input>
+
+                    <label>VoetbalCode1:</label>
+                    <input>
+
+                    <label>VoetbalCode2</label>
+                    <input>
+
+                    <button type="submit">Koop </button>
+                </form>
             </div>
         </div>
 </body>
