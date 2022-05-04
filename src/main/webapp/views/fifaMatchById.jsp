@@ -30,7 +30,7 @@
                     <label>VoetbalCode2</label>
                     <input>
 
-                    <button type="submit">Koop </button>
+		            <button type="submit" class="px-4 py-2 font-semibold text-sm bg-[#4a524d] text-white rounded-md shadow-sm opacity-100">Koop</button>
                 </form>
             </div>
         </div>

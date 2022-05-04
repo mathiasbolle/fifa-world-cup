@@ -1,11 +1,11 @@
 package be.hogent.fifa_world_cup;
 
 import domain.MatchCommand;
-import domain.Wedstrijd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.VoetbalService;
 
 @Controller
@@ -23,8 +23,8 @@ public class FifaStadiumController {
 
     @GetMapping("/{id}")
     public String showFifaMatchById(@ModelAttribute(name = "stadiumSelection") MatchCommand nameStadium, @PathVariable("id") int id, Model model) {
-        model.addAttribute("stadiumName", nameStadium.getStadiumName());
         System.out.println(nameStadium.getStadiumName());
+        model.addAttribute("stadiumName", nameStadium);
         model.addAttribute("match_title", voetbalService.getWedstrijd(String.valueOf(id)).getWedstrijd().toString());
         model.addAttribute("available_tickets", voetbalService.getWedstrijd(String.valueOf(id)).getTickets());
 
@@ -32,7 +32,9 @@ public class FifaStadiumController {
     }
 
     @PostMapping
-    public String onSubmit(@ModelAttribute(name = "stadiumSelection") MatchCommand nameStadium, Model model) {
+    public String onSubmit(@ModelAttribute(name = "stadiumSelection") MatchCommand nameStadium, Model model, RedirectAttributes redirect) {
+        redirect.addFlashAttribute("stadiumSelection", nameStadium);
+
         model.addAttribute("stadiumName", nameStadium.getStadiumName());
         model.addAttribute("wedstrijden",voetbalService.getWedstrijdenByStadium(nameStadium.getStadiumName()));
         System.out.println(nameStadium.getStadiumName());
