@@ -17,21 +17,25 @@
             <div class="border-8 border-[#4a524d] border-double rounded px-14 py-8 bg-white">
                 <h3>${match_title}</h3>
                 <h3>Aantal tickets beschikbaar: ${available_tickets}</h3>
-                <form>
+                <form:form method="POST" modelAttribute="purchase">
                     <label>Email:</label>
-                    <input>
+                    <form:input path="email" size="20"/>
+                    <form:errors path="email" />
 
                     <label>Aantal tickets:</label>
-                    <input>
+                    <form:input value="1" type="number" path="amount_tickets" />
+                    <form:errors path="amount_tickets"/>
 
                     <label>VoetbalCode1:</label>
-                    <input>
+                    <form:input value="10" type="number" path="voetbalCode_1" />
+                    <form:errors path="voetbalCode_1" />
 
                     <label>VoetbalCode2</label>
-                    <input>
+                    <form:input value="20" type="number" path="voetbalCode_2" />
+                    <form:errors path="voetbalCode_2" />
 
 		            <button type="submit" class="px-4 py-2 font-semibold text-sm bg-[#4a524d] text-white rounded-md shadow-sm opacity-100">Koop</button>
-                </form>
+                </form:form>
             </div>
         </div>
 </body>

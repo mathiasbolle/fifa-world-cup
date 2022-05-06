@@ -16,4 +16,5 @@ public class FifaWorldCupApplication {
 	public VoetbalService voetbalService() {
 		return new VoetbalServiceImpl();
 	}
+
 }
