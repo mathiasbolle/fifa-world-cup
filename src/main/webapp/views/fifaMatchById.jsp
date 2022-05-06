@@ -18,23 +18,27 @@
                 <h3>${match_title}</h3>
                 <h3>Aantal tickets beschikbaar: ${available_tickets}</h3>
                 <form:form method="POST" modelAttribute="purchase">
+
+
                     <label>Email:</label>
                     <form:input path="email" size="20"/>
-                    <form:errors path="email" />
+                    <br />
 
                     <label>Aantal tickets:</label>
                     <form:input value="1" type="number" path="amount_tickets" />
-                    <form:errors path="amount_tickets"/>
+                    <br />
 
                     <label>VoetbalCode1:</label>
                     <form:input value="10" type="number" path="voetbalCode_1" />
-                    <form:errors path="voetbalCode_1" />
+                    <br />
 
                     <label>VoetbalCode2</label>
                     <form:input value="20" type="number" path="voetbalCode_2" />
-                    <form:errors path="voetbalCode_2" />
+                    <br />
 
 		            <button type="submit" class="px-4 py-2 font-semibold text-sm bg-[#4a524d] text-white rounded-md shadow-sm opacity-100">Koop</button>
+		            <br/>
+                    <form:errors path="*" class="text-red-500" />
                 </form:form>
             </div>
         </div>

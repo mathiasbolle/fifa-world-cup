@@ -43,15 +43,16 @@ public class FifaStadiumController {
         return "fifaStadiumResult";
     }
     @PostMapping("/{id}")
-    public String onBuyTickets(@Valid Purchase purchase, BindingResult result, @PathVariable("id") int id) {
+    public String onBuyTickets(@Valid Purchase purchase, BindingResult result, @PathVariable("id") int id, Model model) {
         //to pass model attributes to the next JSP.
         if (result.hasErrors()) {
-            System.out.println(result);
-            System.out.println(id);
-            return String.format("redirect:/fifa/%d", id);
+            model.addAttribute("match_title", voetbalService.getWedstrijd(String.valueOf(id)).getWedstrijd().toString());
+            model.addAttribute("available_tickets", voetbalService.getWedstrijd(String.valueOf(id)).getTickets());
+            return "fifaStadiumResult";
         }
-        //model.addAttribute("stadiumSelection", new MatchCommand());
-        //model.addAttribute("stadiumList", voetbalService.getStadiumList());
-        return "redirect:/fifa";
+        model.addAttribute("stadiumSelection", new MatchCommand());
+        model.addAttribute("stadiumList", voetbalService.getStadiumList());
+
+        return String.format("redirect:/fifa?verkocht=%s", voetbalService.ticketsBestellen(String.valueOf(id), purchase.getAmount_tickets()));
     }
 }
