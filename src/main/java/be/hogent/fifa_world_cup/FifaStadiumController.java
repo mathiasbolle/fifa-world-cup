@@ -34,6 +34,10 @@ public class FifaStadiumController {
         model.addAttribute("available_tickets", voetbalService.getWedstrijd(String.valueOf(id)).getTickets());
 
         model.addAttribute("purchase", new Purchase());
+
+        if (voetbalService.getWedstrijd(String.valueOf(id)).getTickets() == 0) {
+            return String.format("redirect:/fifa?verkocht=%s", 0);
+        }
         return "fifaStadiumResult";
     }
 

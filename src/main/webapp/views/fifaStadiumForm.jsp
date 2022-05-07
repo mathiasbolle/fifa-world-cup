@@ -33,6 +33,9 @@
         <c:if test="${verkocht != null}">
             <div class="absolute px-6 py-4 m mb-1 mr-1 bottom-0 right-0 border-4 border-sky-500 border-double bg-white">
                 <c:choose>
+                    <c:when test="${verkocht == 0}">
+                        <p>De voetbalmatch is uitverkocht!</p>
+                    </c:when>
                     <c:when test="${verkocht == 1}">
                         <p>${verkocht} ticket werd aangekocht</p>
                     </c:when>
