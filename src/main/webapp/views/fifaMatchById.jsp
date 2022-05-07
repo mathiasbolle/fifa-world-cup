@@ -25,15 +25,15 @@
                     <br />
 
                     <label>Aantal tickets:</label>
-                    <form:input value="1" type="number" path="amount_tickets" />
+                    <form:input value="1" path="amount_tickets" />
                     <br />
 
                     <label>VoetbalCode1:</label>
-                    <form:input value="10" type="number" path="voetbalCode_1" />
+                    <form:input value="10" path="voetbalCode_1" />
                     <br />
 
                     <label>VoetbalCode2</label>
-                    <form:input value="20" type="number" path="voetbalCode_2" />
+                    <form:input value="20" path="voetbalCode_2" />
                     <br />
 
 		            <button type="submit" class="px-4 py-2 font-semibold text-sm bg-[#4a524d] text-white rounded-md shadow-sm opacity-100">Koop</button>
