@@ -19,9 +19,11 @@ public class FifaStadiumController {
 
 
     @GetMapping
-    public String showFifaStadium(Model model) {
+    public String showFifaStadium(Model model, @RequestParam(name = "verkocht", required = false) String verkocht) {
         model.addAttribute("stadiumList", voetbalService.getStadiumList());
         model.addAttribute("stadiumSelection", new MatchCommand());
+        model.addAttribute("verkocht", verkocht);
+        System.out.println(verkocht);
         return "fifaStadiumForm";
     }
 
