@@ -1,6 +1,7 @@
 package be.hogent.fifa_world_cup;
 
 import be.hogent.fifa_world_cup.validation.Purchase;
+import be.hogent.fifa_world_cup.validator.PurchaseValidator;
 import domain.MatchCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,9 @@ import javax.validation.Valid;
 public class FifaStadiumController {
     @Autowired
     private VoetbalService voetbalService;
+
+    @Autowired
+    private PurchaseValidator purchaseValidator;
 
 
     @GetMapping
@@ -51,6 +55,7 @@ public class FifaStadiumController {
     @PostMapping("/{id}")
     public String onBuyTickets(@Valid Purchase purchase, BindingResult result, @PathVariable("id") int id, Model model) {
         //to pass model attributes to the next JSP.
+        purchaseValidator.validate(purchase, result);
         if (result.hasErrors()) {
             model.addAttribute("match_title", voetbalService.getWedstrijd(String.valueOf(id)).getWedstrijd().toString());
             model.addAttribute("available_tickets", voetbalService.getWedstrijd(String.valueOf(id)).getTickets());

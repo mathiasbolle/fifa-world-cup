@@ -1,5 +1,6 @@
 package be.hogent.fifa_world_cup;
 
+import be.hogent.fifa_world_cup.validator.PurchaseValidator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,4 +18,8 @@ public class FifaWorldCupApplication {
 		return new VoetbalServiceImpl();
 	}
 
+	@Bean
+	public PurchaseValidator purchaseValidator() {
+		return new PurchaseValidator();
+	}
 }
