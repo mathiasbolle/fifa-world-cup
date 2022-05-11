@@ -45,4 +45,5 @@
                 </c:choose>
             </div>
         </c:if>
+    <a href=/logout><button id="logout">Logout</button></a>
 </body>
