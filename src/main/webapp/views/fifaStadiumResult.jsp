@@ -31,4 +31,5 @@
             <jsp:include page="fifaMatchById.jsp" />
         </c:otherwise>
     </c:choose>
+    <jsp:include page="logout.jsp" />
 </body>
