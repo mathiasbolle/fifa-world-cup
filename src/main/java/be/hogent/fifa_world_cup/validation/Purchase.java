@@ -4,19 +4,19 @@ import javax.validation.constraints.*;
 
 public class Purchase {
 
-    @Email
-    @NotEmpty
+    @Email(message = "{validation.email.notValid}")
+    @NotEmpty(message = "{validation.email.NotEmpty}")
     private String email;
 
     @Min(1)
     @Max(25)
-    @NotNull
+    @NotNull(message = "{validation.amount_tickets.NotNull}")
     private Integer amount_tickets;
 
-    @NotNull
+    @NotNull(message = "{validation.voetbalCode_1.NotNull}")
     private Integer voetbalCode_1;
 
-    @NotNull
+    @NotNull(message = "{validation.voetbalCode_2.NotNull}")
     private Integer voetbalCode_2;
     public String getEmail() {
         return email;
