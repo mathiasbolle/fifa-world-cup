@@ -22,23 +22,26 @@
 
                     <label>Email:</label>
                     <form:input path="email" size="20"/>
+                    <form:errors path="email" class="text-red-500 inline" />
                     <br />
 
                     <label>Aantal tickets:</label>
                     <form:input value="1" path="amount_tickets" />
+                    <form:errors path="amount_tickets" class="text-red-500 inline" />
                     <br />
 
                     <label>VoetbalCode1:</label>
                     <form:input value="10" path="voetbalCode_1" />
+                    <form:errors path="voetbalCode_1" class="text-red-500 inline" />
                     <br />
 
                     <label>VoetbalCode2</label>
                     <form:input value="20" path="voetbalCode_2" />
+                    <form:errors path="voetbalCode_2" class="text-red-500 inline" />
                     <br />
 
 		            <button type="submit" class="px-4 py-2 font-semibold text-sm bg-[#4a524d] text-white rounded-md shadow-sm opacity-100">Koop</button>
 		            <br/>
-                    <form:errors path="*" class="text-red-500" />
                 </form:form>
             </div>
         </div>
