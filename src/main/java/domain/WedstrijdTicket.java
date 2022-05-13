@@ -1,9 +1,25 @@
 package domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "wedstrijd_tickets")
 public class WedstrijdTicket {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int wedstrijd_ticket_id;
+
+    @ManyToOne
     private Wedstrijd wedstrijd;
 
     private int tickets; //aantal tickets beschikbaar
+
+    public WedstrijdTicket() {
+    }
+
+    public void setWedstrijd(Wedstrijd wedstrijd) {
+        //this.wedstrijd = wedstrijd;
+    }
 
     public WedstrijdTicket(Wedstrijd wedstrijd, int tickets) {
         this.wedstrijd = wedstrijd;

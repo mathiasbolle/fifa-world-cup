@@ -2,21 +2,33 @@ package domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
+@Entity
+@Table(name = "wedstrijden")
 public class Wedstrijd {
+    @Id
+    @Column(name = "wedstrijd_id")
     private String id; //unieke sleutel
 
-    private String[] landen; //2 landen van de wedstrijd
+
+    //@OneToMany(mappedBy = "wedstrijd")
+    //private List<WedstrijdTicket> w;
+
+    private String land1;
+    private String land2;
 
     private Date datum;
-    private int dag; //dag van de wedstrijd
 
     private int uur; //uur van de wedstrijd
+
+    @Transient
     private Calendar cal;
 
     public Wedstrijd() {
@@ -24,7 +36,8 @@ public class Wedstrijd {
 
     public Wedstrijd(String id, String[] landen, int dag, int maand, int uur) {
         this.id = id;
-        this.landen = landen;
+        land1 = landen[0];
+        land2 = landen[1];
         this.datum = new GregorianCalendar(2022, maand, dag).getTime();
         this.uur = uur;
         cal = Calendar.getInstance();
@@ -36,7 +49,7 @@ public class Wedstrijd {
     }
 
     public String[] getLanden() {
-        return landen;
+        return new String[] {land1, land2};
     }
 
     public Date getDatum() {
@@ -50,6 +63,6 @@ public class Wedstrijd {
     @Override
     public String toString()
     {
-        return String.format("%s vs %s op %d-%d", landen[0], landen[1], cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH));
+        return String.format("%s vs %s op %d-%d", land1, land2, cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH));
     }
 }
