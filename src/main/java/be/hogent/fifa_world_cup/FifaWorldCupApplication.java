@@ -23,6 +23,11 @@ public class FifaWorldCupApplication {
 		return new JpaStadionDao();
 	}
 
+	@Bean
+	public JpaWedstrijdTicketDao wedstrijdTicketDao() {
+		return new JpaWedstrijdTicketDao();
+	}
+
 	//this was before we use the database
 	@Bean
 	public VoetbalService voetbalService() {

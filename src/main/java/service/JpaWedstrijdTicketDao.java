@@ -19,6 +19,8 @@ public class JpaWedstrijdTicketDao extends GenericDaoJpa<WedstrijdTicket> implem
     public List<WedstrijdTicket> getWedstrijdenByStadion(String name) {
         TypedQuery<WedstrijdTicket> queryWedstrijdTicket =
                 em.createNamedQuery("WedstrijdTicket.getWedstrijdenByStadions", WedstrijdTicket.class);
+        queryWedstrijdTicket.setParameter("name", name);
+        System.out.println(queryWedstrijdTicket);
         return queryWedstrijdTicket.getResultList();
     }
 }

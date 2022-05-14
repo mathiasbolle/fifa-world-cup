@@ -4,9 +4,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "wedstrijd_tickets")
+//original query: SELECT t FROM WedstrijdTicket t JOIN t.wedstrijd w JOIN w.stadion s WHERE :name = s.name
 @NamedQueries({
         @NamedQuery(name="WedstrijdTicket.getWedstrijdenByStadions",
-                query="SELECT t FROM WedstrijdTicket t JOIN t.wedstrijd w JOIN w.stadion s WHERE :name MEMBER OF w.name"),
+                query="SELECT t FROM WedstrijdTicket t JOIN t.wedstrijd w JOIN w.stadion s WHERE :name = s.name"),
 })
 public class WedstrijdTicket {
     @Id

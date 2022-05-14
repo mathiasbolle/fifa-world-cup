@@ -42,7 +42,8 @@ public class FifaStadiumController {
     @GetMapping("/{id}")
     public String showFifaMatchById(@ModelAttribute(name = "stadiumSelection") MatchCommand nameStadium, @PathVariable("id") int id, Model model) {
         model.addAttribute("stadiumName", nameStadium);
-        model.addAttribute("match_title", voetbalService.getWedstrijd(String.valueOf(id)).getWedstrijd().toString());
+        //model.addAttribute("match_title", voetbalService.getWedstrijd(String.valueOf(id)).getWedstrijd().toString());
+        model.addAttribute("match_title", wedstrijdTicketDao.get((long) id).getWedstrijd());
         model.addAttribute("available_tickets", voetbalService.getWedstrijd(String.valueOf(id)).getTickets());
 
         model.addAttribute("purchase", new Purchase());
@@ -55,8 +56,9 @@ public class FifaStadiumController {
 
     @PostMapping
     public String onSubmit(@ModelAttribute(name = "stadiumSelection") MatchCommand nameStadium, Model model) {
+        System.out.println(wedstrijdTicketDao.getWedstrijdenByStadion(nameStadium.getStadiumName()));
         model.addAttribute("stadiumName", nameStadium.getStadiumName());
-        model.addAttribute("wedstrijden",voetbalService.getWedstrijdenByStadium(nameStadium.getStadiumName()));
+        model.addAttribute("wedstrijden",wedstrijdTicketDao.getWedstrijdenByStadion(nameStadium.getStadiumName()));
         System.out.println(nameStadium.getStadiumName());
         return "fifaStadiumResult";
     }
