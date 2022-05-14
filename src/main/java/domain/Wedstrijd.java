@@ -1,10 +1,6 @@
 package domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -17,9 +13,12 @@ public class Wedstrijd {
     @Column(name = "wedstrijd_id")
     private String id; //unieke sleutel
 
+    @OneToMany(mappedBy = "wedstrijd")
+    private List<WedstrijdTicket> w;
 
-    //@OneToMany(mappedBy = "wedstrijd")
-    //private List<WedstrijdTicket> w;
+    @ManyToOne
+    private Stadion stadion;
+
 
     private String land1;
     private String land2;
@@ -30,6 +29,16 @@ public class Wedstrijd {
 
     @Transient
     private Calendar cal;
+
+
+    public Stadion getStadion() {
+        return stadion;
+    }
+
+    public void setStadion(Stadion stadion) {
+        this.stadion = stadion;
+    }
+
 
     public Wedstrijd() {
     }

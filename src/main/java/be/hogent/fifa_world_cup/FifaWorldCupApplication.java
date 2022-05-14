@@ -6,19 +6,30 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import service.VoetbalService;
-import service.VoetbalServiceImpl;
+import service.*;
 
 @SpringBootApplication
 public class FifaWorldCupApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FifaWorldCupApplication.class, args);
 	}
+	@Bean
+	public JpaWedstrijdDao wedstrijdDao() {
+		return new JpaWedstrijdDao();
+	}
 
+	@Bean
+	public JpaStadionDao stadionDao() {
+		return new JpaStadionDao();
+	}
+
+	//this was before we use the database
 	@Bean
 	public VoetbalService voetbalService() {
 		return new VoetbalServiceImpl();
 	}
+
+
 
 	@Bean
 	public PurchaseValidator purchaseValidator() {

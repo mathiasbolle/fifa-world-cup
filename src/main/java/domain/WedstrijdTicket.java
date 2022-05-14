@@ -4,12 +4,17 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "wedstrijd_tickets")
+@NamedQueries({
+        @NamedQuery(name="WedstrijdTicket.getWedstrijdenByStadions",
+                query="SELECT t FROM WedstrijdTicket t JOIN t.wedstrijd w JOIN w.stadion s WHERE :name MEMBER OF w.name"),
+})
 public class WedstrijdTicket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int wedstrijd_ticket_id;
 
     @ManyToOne
+    @JoinColumn(name = "wedstrijd_id")
     private Wedstrijd wedstrijd;
 
     private int tickets; //aantal tickets beschikbaar

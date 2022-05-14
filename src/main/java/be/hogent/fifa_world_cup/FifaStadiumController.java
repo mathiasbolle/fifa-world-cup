@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import service.JpaStadionDao;
+import service.JpaWedstrijdDao;
+import service.JpaWedstrijdTicketDao;
 import service.VoetbalService;
 
 import javax.validation.Valid;
@@ -15,6 +18,11 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/fifa")
 public class FifaStadiumController {
+    @Autowired
+    private JpaStadionDao stadionDao;
+    @Autowired
+    private JpaWedstrijdTicketDao wedstrijdTicketDao;
+
     @Autowired
     private VoetbalService voetbalService;
 
@@ -24,7 +32,7 @@ public class FifaStadiumController {
 
     @GetMapping
     public String showFifaStadium(Model model, @RequestParam(name = "verkocht", required = false) String verkocht) {
-        model.addAttribute("stadiumList", voetbalService.getStadiumList());
+        model.addAttribute("stadiumList", stadionDao.findAll());
         model.addAttribute("stadiumSelection", new MatchCommand());
         model.addAttribute("verkocht", verkocht);
         System.out.println(verkocht);
