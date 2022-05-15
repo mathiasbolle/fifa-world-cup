@@ -11,7 +11,8 @@ import java.util.List;
 public class Wedstrijd {
     @Id
     @Column(name = "wedstrijd_id")
-    private String id; //unieke sleutel
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id; //unieke sleutel
 
     @OneToMany(mappedBy = "wedstrijd")
     private List<WedstrijdTicket> w;
@@ -43,8 +44,7 @@ public class Wedstrijd {
     public Wedstrijd() {
     }
 
-    public Wedstrijd(String id, String[] landen, int dag, int maand, int uur) {
-        this.id = id;
+    public Wedstrijd(String[] landen, int dag, int maand, int uur) {
         land1 = landen[0];
         land2 = landen[1];
         this.datum = new GregorianCalendar(2022, maand, dag).getTime();
@@ -53,7 +53,7 @@ public class Wedstrijd {
         cal.setTime(datum);
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

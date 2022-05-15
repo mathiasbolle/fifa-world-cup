@@ -1,5 +1,8 @@
 package be.hogent.fifa_world_cup;
 
+import domain.Stadion;
+import domain.Wedstrijd;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -10,6 +13,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import service.JpaStadionDao;
+import service.JpaWedstrijdDao;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -53,4 +58,17 @@ public class PersistenceJPAConfig {
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());return em;}
+
+    @Bean
+    public CommandLineRunner seedDatabase(JpaStadionDao stadionDao, JpaWedstrijdDao wedstrijdDao) {
+        return (args -> {
+            //insert the stadion records
+           stadionDao.insert(new Stadion("Al Bayt Stadium"));
+           stadionDao.insert(new Stadion("Al Thumama Stadium"));
+
+           //insert the wedstrijden records
+            wedstrijdDao.insert(new Wedstrijd(new String[]{"België", "Canada"}, 26, 11, 35));
+        });
+    }
+
 }

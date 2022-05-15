@@ -10,6 +10,7 @@ import service.*;
 
 @SpringBootApplication
 public class FifaWorldCupApplication {
+
 	public static void main(String[] args) {
 		SpringApplication.run(FifaWorldCupApplication.class, args);
 	}
