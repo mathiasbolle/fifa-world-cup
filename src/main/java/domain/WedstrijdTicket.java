@@ -7,16 +7,16 @@ import javax.persistence.*;
 //original query: SELECT t FROM WedstrijdTicket t JOIN t.wedstrijd w JOIN w.stadion s WHERE :name = s.name
 @NamedQueries({
         @NamedQuery(name="WedstrijdTicket.getWedstrijdenByStadions",
-                query="SELECT t FROM WedstrijdTicket t JOIN t.wedstrijd w JOIN w.stadion s WHERE :name = s.name"),
+                query="SELECT t FROM WedstrijdTicket t JOIN t.wed w JOIN w.s sta WHERE :name = sta.name"),
 })
 public class WedstrijdTicket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int wedstrijd_ticket_id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "wedstrijd_id")
-    private Wedstrijd wedstrijd;
+    private Wedstrijd wed;
 
     private int tickets; //aantal tickets beschikbaar
 
@@ -28,7 +28,7 @@ public class WedstrijdTicket {
     }
 
     public WedstrijdTicket(Wedstrijd wedstrijd, int tickets) {
-        this.wedstrijd = wedstrijd;
+        this.wed = wedstrijd;
         this.tickets = tickets;
     }
 
@@ -37,7 +37,7 @@ public class WedstrijdTicket {
     }
 
     public Wedstrijd getWedstrijd() {
-        return wedstrijd;
+        return wed;
     }
 
     //We willen 'aantal' tickets kopen

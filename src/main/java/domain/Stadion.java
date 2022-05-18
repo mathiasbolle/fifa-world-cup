@@ -2,7 +2,8 @@ package domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "stadions")
@@ -14,11 +15,14 @@ public class Stadion implements Serializable {
 
     private String name;
 
-    /*
-    @OneToMany(mappedBy = "w")
-    private List<Wedstrijd> wedstrijden;
+    @OneToMany(mappedBy = "s")
+    private Set<Wedstrijd> wedstrijden = new HashSet<>();
 
-     */
+    public void addWedstrijd(Wedstrijd wedstrijd) {
+        wedstrijden.add(wedstrijd);
+    }
+
+
     protected Stadion() {
 
     }

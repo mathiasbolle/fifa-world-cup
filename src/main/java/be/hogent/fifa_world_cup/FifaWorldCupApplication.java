@@ -35,8 +35,6 @@ public class FifaWorldCupApplication {
 		return new VoetbalServiceImpl();
 	}
 
-
-
 	@Bean
 	public PurchaseValidator purchaseValidator() {
 		return new PurchaseValidator();

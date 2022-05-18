@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "wedstrijden")
@@ -14,11 +14,12 @@ public class Wedstrijd {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; //unieke sleutel
 
-    @OneToMany(mappedBy = "wedstrijd")
-    private List<WedstrijdTicket> w;
+    @OneToOne(mappedBy = "wed")
+    private WedstrijdTicket wedstrijdTicket;
 
     @ManyToOne
-    private Stadion stadion;
+    @JoinColumn(name = "stadion_id")
+    private Stadion s;
 
 
     private String land1;
@@ -31,26 +32,41 @@ public class Wedstrijd {
     @Transient
     private Calendar cal;
 
+    @OneToOne(orphanRemoval = true)
+    @JoinTable(name = "wedstrijden_wedstrijd",
+            joinColumns = @JoinColumn(name = "wedstrijd_1_wedstrijd_id"),
+            inverseJoinColumns = @JoinColumn(name = "wedstrijd_2_wedstrijd_id"))
+    private Wedstrijd wedstrijd;
 
-    public Stadion getStadion() {
-        return stadion;
+    public Wedstrijd getWedstrijd() {
+        return wedstrijd;
     }
 
-    public void setStadion(Stadion stadion) {
-        this.stadion = stadion;
+    public void setWedstrijd(Wedstrijd wedstrijd) {
+        this.wedstrijd = wedstrijd;
+    }
+
+
+    public Stadion getStadion() {
+        return s;
+    }
+
+    public void setStadion(Stadion s) {
+        this.s = s;
     }
 
 
     public Wedstrijd() {
     }
 
-    public Wedstrijd(String[] landen, int dag, int maand, int uur) {
+    public Wedstrijd(String[] landen, int dag, int maand, int uur, Stadion stadion ) {
         land1 = landen[0];
         land2 = landen[1];
         this.datum = new GregorianCalendar(2022, maand, dag).getTime();
         this.uur = uur;
         cal = Calendar.getInstance();
         cal.setTime(datum);
+        this.s = stadion;
     }
 
     public int getId() {

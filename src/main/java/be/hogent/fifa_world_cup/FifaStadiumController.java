@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import service.JpaStadionDao;
-import service.JpaWedstrijdDao;
 import service.JpaWedstrijdTicketDao;
 import service.VoetbalService;
 
@@ -32,6 +31,7 @@ public class FifaStadiumController {
 
     @GetMapping
     public String showFifaStadium(Model model, @RequestParam(name = "verkocht", required = false) String verkocht) {
+
         model.addAttribute("stadiumList", stadionDao.findAll());
         model.addAttribute("stadiumSelection", new MatchCommand());
         model.addAttribute("verkocht", verkocht);
