@@ -8,6 +8,8 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name="WedstrijdTicket.getWedstrijdenByStadions",
                 query="SELECT t FROM WedstrijdTicket t JOIN t.wed w JOIN w.s sta WHERE :name = sta.name"),
+        @NamedQuery(name="WedstrijdTicket.getTicketsOfWedstrijdById",
+                query = "SELECT t FROM WedstrijdTicket t JOIN t.wed w WHERE :id = w.id")
 })
 public class WedstrijdTicket {
     @Id

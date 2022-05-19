@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface WedstrijdTicketDao extends GenericDao<WedstrijdTicket> {
 
-    public List<WedstrijdTicket> getWedstrijdenByStadion(String name);
+    List<WedstrijdTicket> getWedstrijdenByStadion(String name);
+
+    WedstrijdTicket getTicketsOfWedstrijdById(Integer id);
+
+
 }

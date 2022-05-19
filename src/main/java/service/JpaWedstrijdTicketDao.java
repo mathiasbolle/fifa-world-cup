@@ -23,4 +23,13 @@ public class JpaWedstrijdTicketDao extends GenericDaoJpa<WedstrijdTicket> implem
         System.out.println(queryWedstrijdTicket);
         return queryWedstrijdTicket.getResultList();
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public WedstrijdTicket getTicketsOfWedstrijdById(Integer id) {
+        TypedQuery<WedstrijdTicket> queryWedstrijdTicket =
+                em.createNamedQuery("WedstrijdTicket.getTicketsOfWedstrijdById", WedstrijdTicket.class);
+        queryWedstrijdTicket.setParameter("id", id);
+        return queryWedstrijdTicket.getSingleResult();
+    }
 }

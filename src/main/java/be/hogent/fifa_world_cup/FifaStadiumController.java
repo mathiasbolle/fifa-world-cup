@@ -43,12 +43,11 @@ public class FifaStadiumController {
     public String showFifaMatchById(@ModelAttribute(name = "stadiumSelection") MatchCommand nameStadium, @PathVariable("id") int id, Model model) {
         model.addAttribute("stadiumName", nameStadium);
         //model.addAttribute("match_title", voetbalService.getWedstrijd(String.valueOf(id)).getWedstrijd().toString());
-        model.addAttribute("match_title", wedstrijdTicketDao.get((long) id).getWedstrijd());
-        model.addAttribute("available_tickets", voetbalService.getWedstrijd(String.valueOf(id)).getTickets());
-
+        model.addAttribute("match_title", wedstrijdTicketDao.get(id).getWedstrijd());
+        model.addAttribute("available_tickets", wedstrijdTicketDao.getTicketsOfWedstrijdById(id).getTickets());
         model.addAttribute("purchase", new Purchase());
 
-        if (voetbalService.getWedstrijd(String.valueOf(id)).getTickets() == 0) {
+        if (wedstrijdTicketDao.getTicketsOfWedstrijdById(id).getTickets() == 0) {
             return String.format("redirect:/fifa?verkocht=%s", 0);
         }
         return "fifaStadiumResult";

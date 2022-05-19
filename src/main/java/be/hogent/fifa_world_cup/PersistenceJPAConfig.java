@@ -27,7 +27,7 @@ import java.util.Properties;
 public class PersistenceJPAConfig {
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create");
         return properties;
     }
     @Bean

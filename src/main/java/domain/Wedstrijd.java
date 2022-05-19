@@ -88,6 +88,8 @@ public class Wedstrijd {
     @Override
     public String toString()
     {
-        return String.format("%s vs %s op %d-%d", land1, land2, cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH));
+        //TODO error!
+        return "";
+        //return String.format("%s vs %s op %d-%d", land1, land2, cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH));
     }
 }

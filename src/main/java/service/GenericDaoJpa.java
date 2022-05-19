@@ -33,7 +33,7 @@ public class GenericDaoJpa<T> implements GenericDao<T> {
     }
 
     @Override
-    public T get(Long id) {
+    public T get(Integer id) {
         return this.em.find(this.type, id);
     }
 
