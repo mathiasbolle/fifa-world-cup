@@ -51,6 +51,8 @@ public class WedstrijdTicket {
         //Nog voldoende tickets
         if (tickets >= aantal) {
             tickets -= aantal;
+
+            System.out.println(tickets);
             return aantal;
         }
 

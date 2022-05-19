@@ -85,11 +85,14 @@ public class Wedstrijd {
         return this.uur;
     }
 
+    public int ticketsBestellen(int teBestellen) {
+        return wedstrijdTicket.ticketsKopen(teBestellen);
+    }
+
     @Override
     public String toString()
     {
         //TODO error!
-        return "";
-        //return String.format("%s vs %s op %d-%d", land1, land2, cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH));
+        return String.format("%s vs %s op %d-%d", land1, land2, datum.getDay(), datum.getMonth());
     }
 }
