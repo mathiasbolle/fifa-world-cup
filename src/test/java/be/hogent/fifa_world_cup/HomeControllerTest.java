@@ -23,6 +23,7 @@ public class HomeControllerTest {
     public void testRedirectGet() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isFound())
-                .andExpect(view().name("redirect:/fifa"));
+                .andExpect(view().name("redirect:/fifa"))
+                .andExpect(forwardedUrl("/views/fifaStadiumForm.jsp"));
     }
 }
