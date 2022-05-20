@@ -4,15 +4,13 @@ import be.hogent.fifa_world_cup.validation.Purchase;
 import be.hogent.fifa_world_cup.validator.PurchaseValidator;
 import domain.MatchCommand;
 import domain.Wedstrijd;
+import domain.WedstrijdTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import service.JpaStadionDao;
-import service.JpaWedstrijdDao;
-import service.JpaWedstrijdTicketDao;
-import service.VoetbalService;
+import service.*;
 
 import javax.validation.Valid;
 
@@ -34,7 +32,6 @@ public class FifaStadiumController {
 
     @GetMapping
     public String showFifaStadium(Model model, @RequestParam(name = "verkocht", required = false) String verkocht) {
-
         model.addAttribute("stadiumList", stadionDao.findAll());
         model.addAttribute("stadiumSelection", new MatchCommand());
         model.addAttribute("verkocht", verkocht);
@@ -70,7 +67,6 @@ public class FifaStadiumController {
         //to pass model attributes to the next JSP.
 
         purchaseValidator.validate(purchase, result);
-        System.out.println("test");
         if (result.hasErrors()) {
             model.addAttribute("match_title", wedstrijdTicketDao.get(id).getWedstrijd().toString());
             model.addAttribute("available_tickets", wedstrijdTicketDao.getTicketsOfWedstrijdById(id).getTickets());
@@ -78,7 +74,15 @@ public class FifaStadiumController {
         }
         model.addAttribute("stadiumSelection", new MatchCommand());
         model.addAttribute("stadiumList", stadionDao.findAll());
+        //int amountTickets = wedstrijdDao.get(id).ticketsBestellen(purchase.getAmount_tickets());
 
-        return String.format("redirect:/fifa?verkocht=%s", wedstrijdDao.get(id).ticketsBestellen(purchase.getAmount_tickets()));
+        WedstrijdTicket wedstrijdTicket = wedstrijdTicketDao.get(id);
+        wedstrijdTicket.ticketsKopen(purchase.getAmount_tickets());
+        //wedstrijdTicket.setTickets(amountTickets);
+
+        wedstrijdTicketDao.update(wedstrijdTicket);
+
+        System.out.printf("hoeveel tickets %d", purchase.getAmount_tickets());
+        return String.format("redirect:/fifa?verkocht=%s", purchase.getAmount_tickets());
     }
 }

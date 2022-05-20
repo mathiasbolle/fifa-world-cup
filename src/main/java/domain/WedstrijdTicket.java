@@ -38,6 +38,10 @@ public class WedstrijdTicket {
         return tickets;
     }
 
+    public void setTickets(int tickets) {
+        this.tickets = tickets;
+    }
+
     public Wedstrijd getWedstrijd() {
         return wed;
     }
@@ -52,7 +56,6 @@ public class WedstrijdTicket {
         if (tickets >= aantal) {
             tickets -= aantal;
 
-            System.out.println(tickets);
             return aantal;
         }
 
