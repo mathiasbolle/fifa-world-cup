@@ -40,8 +40,10 @@ public class FifaStadiumController {
     }
 
     @GetMapping("/{id}")
-    public String showFifaMatchById(@ModelAttribute(name = "stadiumSelection") MatchCommand nameStadium, @PathVariable("id") int id, Model model) {
-        model.addAttribute("stadiumName", nameStadium);
+    public String showFifaMatchById(@PathVariable("id") int id, Model model) {
+        String x = stadionDao.stadionNameByMatchId(id);
+        System.out.println(x);
+        model.addAttribute("stadiumName", x);
         //model.addAttribute("match_title", voetbalService.getWedstrijd(String.valueOf(id)).getWedstrijd().toString());
         model.addAttribute("match_title", wedstrijdTicketDao.get(id).getWedstrijd().toString());
         model.addAttribute("available_tickets", wedstrijdTicketDao.getTicketsOfWedstrijdById(id).getTickets());

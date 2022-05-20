@@ -7,6 +7,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "stadions")
+@NamedQueries({
+        @NamedQuery(name = "Stadion.stadionNameByMatchId", query="select s From Stadion s JOIN s.wedstrijden w WHERE w.id = :id")
+})
 public class Stadion implements Serializable {
 
     @Id
