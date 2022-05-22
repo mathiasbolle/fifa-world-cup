@@ -1,5 +1,7 @@
 package be.hogent.fifa_world_cup.validation;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.validation.constraints.*;
 
 public class Purchase {
@@ -8,8 +10,12 @@ public class Purchase {
     @NotEmpty(message = "{validation.email.NotEmpty}")
     private String email;
 
-    @Min(1)
-    @Max(25)
+    /*
+    @Min(value =, message = "{validation.amount_tickets.range}")
+    @Max(value = 25, message = "{validation.amount_tickets.range}")
+
+     */
+    @Range(min = 1, max=25, message = "{validation.amount_tickets.range}")
     @NotNull(message = "{validation.amount_tickets.NotNull}")
     private Integer amount_tickets;
 

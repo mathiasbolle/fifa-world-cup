@@ -23,6 +23,7 @@ public class PurchaseValidator implements Validator {
                         "voetbalCode1 moet kleiner zijn dan voetbalCode_2");
             }
         }catch(NullPointerException e) {
+
             //handle this by the purchase class
         }
     }

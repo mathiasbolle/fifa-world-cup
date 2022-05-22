@@ -64,7 +64,8 @@ public class FifaStadiumController {
         return "fifaStadiumResult";
     }
     @PostMapping("/{id}")
-    public String onBuyTickets(@Valid Purchase purchase, BindingResult result, @PathVariable("id") int id, Model model) {
+    @ExceptionHandler(NumberFormatException.class)
+    public String onBuyTickets(@Valid Purchase purchase, BindingResult result, @PathVariable("id") int id, Model model, Exception ex) {
         //to pass model attributes to the next JSP.
 
         purchaseValidator.validate(purchase, result);
@@ -74,6 +75,8 @@ public class FifaStadiumController {
             String x = stadionDao.stadionNameByMatchId(id);
             System.out.println(x);
             model.addAttribute("stadiumName", x);
+            String numberFormatException = ex.getLocalizedMessage();
+            model.addAttribute("nfe", numberFormatException);
             return "fifaStadiumResult";
         }
         model.addAttribute("stadiumSelection", new MatchCommand());
