@@ -52,7 +52,6 @@ public class FifaStadiumController {
         if (wedstrijdTicketDao.getTicketsOfWedstrijdById(id).uitverkocht()) {
             return String.format("redirect:/fifa?verkocht=%s", 0);
         }
-        System.out.println("test");
         return "fifaStadiumResult";
     }
 
@@ -72,6 +71,9 @@ public class FifaStadiumController {
         if (result.hasErrors()) {
             model.addAttribute("match_title", wedstrijdTicketDao.get(id).getWedstrijd().toString());
             model.addAttribute("available_tickets", wedstrijdTicketDao.getTicketsOfWedstrijdById(id).getTickets());
+            String x = stadionDao.stadionNameByMatchId(id);
+            System.out.println(x);
+            model.addAttribute("stadiumName", x);
             return "fifaStadiumResult";
         }
         model.addAttribute("stadiumSelection", new MatchCommand());
